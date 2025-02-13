@@ -22,7 +22,7 @@ const ServicesPage = () => {
       icon: Brain,
       title: "AI应用落地",
       description: "AI技术行业应用综合解决方案",
-      link: "https://www.cuteguin.com",
+      link: "https://www.coijing.com",
       features: [
         "自动驾驶场景应用",
         "通用大模型应用",
