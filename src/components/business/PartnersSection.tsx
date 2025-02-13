@@ -13,8 +13,9 @@ const PartnersSection = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-blue-900">合作伙伴</h2>
         <div className="relative w-full">
+          <img src="/hezuo.jpg" alt="" />
           {/* 使用两个滚动容器实现无限滚动 */}
-          <div className="flex whitespace-nowrap">
+          {/* <div className="flex whitespace-nowrap">
             <div className="flex animate-scroll-infinite">
               {Array.from({ length: partnerCount }).map((_, index) => (
                 <motion.div
@@ -49,7 +50,7 @@ const PartnersSection = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <style jsx global>{`
