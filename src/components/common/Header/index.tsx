@@ -10,6 +10,8 @@ const navigation = [
   { name: '服务介绍', href: '/services' },
   { name: '合作伙伴', href: '/partners' },
   { name: '联系我们', href: '/contact' },
+  { name: '供应商申请', href: 'https://ap.henanduojing.com/supplier-form', external: true },
+  { name: '合作申请', href: 'https://ap.henanduojing.com/cooperation-form', external: true },
 ]
 
 export const Header = () => {
@@ -51,6 +53,7 @@ export const Header = () => {
               >
                 <Link
                   href={item.href}
+                  {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
                   className="text-white group-hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors relative"
                 >
                   {item.name}
@@ -99,6 +102,7 @@ export const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
+                {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
                 onClick={() => setIsOpen(false)}
                 className="block px-3 py-2 text-base font-medium text-white hover:text-blue-600 hover:bg-gray-50/50 rounded-lg transition-colors"
               >
