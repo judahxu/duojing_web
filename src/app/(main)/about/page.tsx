@@ -87,7 +87,7 @@ const HomePage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white/5 backdrop-blur-lg rounded-lg p-6 text-center"
           >
-            <h3 className="text-blue-400 text-3xl font-bold mb-2">2+</h3>
+            <h3 className="text-blue-400 text-3xl font-bold mb-2">4+</h3>
             <p className="text-sm text-gray-300">合资公司</p>
             <p className="text-xs text-gray-400 mt-1">与上市公司、政府平台公司成立合资公司</p>
           </motion.div>
@@ -108,7 +108,7 @@ const HomePage = () => {
             transition={{ delay: 0.2 }}
             className="bg-white/5 backdrop-blur-lg rounded-lg p-6 text-center"
           >
-            <h3 className="text-blue-400 text-3xl font-bold mb-2">700+</h3>
+            <h3 className="text-blue-400 text-3xl font-bold mb-2">900+</h3>
             <p className="text-sm text-gray-300">交付团队</p>
           </motion.div>
 
