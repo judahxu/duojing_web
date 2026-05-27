@@ -34,7 +34,7 @@ export const Header = () => {
             >
               <Image
                 src="/logo-white.png"
-                alt="多鲸科技"
+                alt="多鲸数据"
                 width={80}
                 height={60}
                 priority

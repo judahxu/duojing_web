@@ -66,7 +66,7 @@ export const Footer = () => {
 
         <div className="my-6">
           <p className="text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} 河南多鲸信息技术有限公司. 保留所有权利.
+            © {new Date().getFullYear()} 河南多鲸数据科技有限公司. 保留所有权利.
             <a className='ml-10' href="https://beian.miit.gov.cn/" target="_blank" >备案号：豫ICP备2023020306号-1</a>
           </p>
           
