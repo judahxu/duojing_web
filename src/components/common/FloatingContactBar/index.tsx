@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { contactInfo } from '@/data/site-content'
+import { CustomerServiceChat } from './CustomerServiceChat'
 
 interface ContactItem {
   id: string
@@ -44,11 +45,24 @@ const WechatIcon = () => (
   </svg>
 )
 
+const ServiceIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+    <path
+      d="M12 3C7.03 3 3 6.58 3 11c0 2.17 1.05 4.12 2.7 5.5L5 21l4.2-1.8c.88.24 1.8.37 2.8.37 4.97 0 9-3.58 9-8s-4.03-8-9-8z"
+      stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.12"
+    />
+    <circle cx="9" cy="11" r="1" fill="currentColor" />
+    <circle cx="12" cy="11" r="1" fill="currentColor" />
+    <circle cx="15" cy="11" r="1" fill="currentColor" />
+  </svg>
+)
+
 const ICON_COL_WIDTH = 72
 const DETAIL_WIDTH = 240
 
 export const FloatingContactBar = () => {
   const [activeId, setActiveId] = useState<string | null>(null)
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
   const items: ContactItem[] = [
     {
@@ -75,16 +89,44 @@ export const FloatingContactBar = () => {
       qrCodeSrc: '/qrcode.jpg',
       Icon: WechatIcon,
     },
+    {
+      id: 'service',
+      label: '客服',
+      detailLabel: '在线客服',
+      detail: '智能问答，为您解答业务咨询',
+      Icon: ServiceIcon,
+    },
   ]
 
   const activeItem = items.find((item) => item.id === activeId)
-  const isExpanded = activeId !== null
+  const isExpanded = activeId !== null && !isChatOpen
 
-  const handleEnter = useCallback((id: string) => setActiveId(id), [])
-  const handleLeave = useCallback(() => setActiveId(null), [])
+  const handleEnter = useCallback((id: string) => {
+    if (id === 'service') return
+    setIsChatOpen(false)
+    setActiveId(id)
+  }, [])
+
+  const handleLeave = useCallback(() => {
+    if (isChatOpen) return
+    setActiveId(null)
+  }, [isChatOpen])
+
+  const handleItemClick = useCallback((id: string) => {
+    if (id === 'service') {
+      setIsChatOpen((prev) => !prev)
+      setActiveId(null)
+      return
+    }
+    setIsChatOpen(false)
+    setActiveId((prev) => (prev === id ? null : id))
+  }, [])
 
   return (
-    <div
+    <>
+      <CustomerServiceChat open={isChatOpen} onClose={() => setIsChatOpen(false)} />
+
+      <div
       className="fixed right-0 top-1/2 -translate-y-1/2 z-[70]"
       aria-label="快捷联系方式"
       onMouseLeave={handleLeave}
@@ -152,7 +194,7 @@ export const FloatingContactBar = () => {
           <div className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full bg-gradient-to-b from-brand/80 via-brand to-brand-subtle/80 shadow-[0_0_12px_hsl(var(--brand)/0.4)]" />
 
           {items.map((item, index) => {
-            const isActive = activeId === item.id
+            const isActive = item.id === 'service' ? isChatOpen : activeId === item.id
 
             return (
               <div
@@ -164,7 +206,7 @@ export const FloatingContactBar = () => {
                   isActive ? 'bg-brand/[0.08]' : 'hover:bg-white/[0.04]',
                 )}
                 onMouseEnter={() => handleEnter(item.id)}
-                onClick={() => setActiveId((prev) => (prev === item.id ? null : item.id))}
+                onClick={() => handleItemClick(item.id)}
               >
                 <div
                   className={cn(
@@ -200,5 +242,6 @@ export const FloatingContactBar = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
