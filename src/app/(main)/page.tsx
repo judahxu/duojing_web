@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Scan } from 'lucide-react'
 import { DomainIcon } from '@/components/icons/domain-icons'
@@ -162,7 +163,7 @@ export default function HomePage() {
             <GlassCard hover={false}>
               <h3 className="text-xl font-bold mb-6">全国业务布局</h3>
               <div className="relative bg-brand-dim/50 rounded-lg overflow-hidden">
-                <img src="/map.png" alt="全国业务布局地图" />
+                <Image src="/map.png" alt="全国业务布局地图" width={800} height={500} className="w-full h-auto" />
               </div>
             </GlassCard>
           </motion.div>

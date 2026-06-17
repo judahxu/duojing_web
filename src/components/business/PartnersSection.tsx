@@ -1,19 +1,13 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const PartnersSection = () => {
-  // 定义合作伙伴数量
-  const partnerCount = 26;
-  
-  // 创建两组相同的合作伙伴列表，用于无缝滚动
-  // const partners = [...Array(partnerCount)];
-
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-brand-subtle">合作伙伴</h2>
         <div className="relative w-full">
-          <img src="/hezuo.jpg" alt="" />
+          <Image src="/hezuo.jpg" alt="合作伙伴" width={1200} height={400} className="w-full h-auto" />
           {/* 使用两个滚动容器实现无限滚动 */}
           {/* <div className="flex whitespace-nowrap">
             <div className="flex animate-scroll-infinite">

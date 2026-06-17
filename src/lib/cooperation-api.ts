@@ -17,7 +17,7 @@ export async function submitCooperation(
   const result = (await response.json()) as ApiResponse
 
   if (result.code !== 200) {
-    throw new Error(result.msg || '提交失败，请重试')
+    throw new Error(result.msg ?? '提交失败，请重试')
   }
 
   return result

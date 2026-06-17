@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Globe } from 'lucide-react';
 import { useMediaQuery } from 'react-responsive';
@@ -137,12 +138,13 @@ const PartnerNetwork = () => {
             {partners.slice(0, 26).map((partner) => (
               <div
                 key={partner.id}
-                className="bg-white rounded-lg p-2 flex items-center justify-center aspect-square"
+                className="relative bg-white rounded-lg p-2 flex items-center justify-center aspect-square"
               >
-                <img
+                <Image
                   src={partner.logo}
                   alt={`Partner ${partner.id}`}
-                  className="w-full h-full object-contain rounded"
+                  fill
+                  className="object-contain rounded p-2"
                 />
               </div>
             ))}
@@ -194,7 +196,7 @@ const PartnerNetwork = () => {
           />
 
           {/* 绘制与合作伙伴数据匹配的轨道 */}
-          {[25, 35, 45].map((radius, index) => (
+          {[25, 35, 45].map((radius) => (
             <g key={`orbit-${radius}`}>
               <ellipse
                 cx="50%"
@@ -247,10 +249,12 @@ const PartnerNetwork = () => {
             className="relative w-80 h-80"
           >
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent animate-pulse">
-                <img src="/earth1.png" alt="" className="w-full h-full object-contain" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent animate-pulse relative">
+                <Image src="/earth1.png" alt="" fill className="object-contain" />
               </div>
-              <img src="/earth.png" alt="" className="w-full h-full object-contain" />
+              <div className="absolute inset-0 relative">
+                <Image src="/earth.png" alt="" fill className="object-contain" />
+              </div>
             </div>
             
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 rounded-full">
@@ -285,11 +289,13 @@ const PartnerNetwork = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: partner.ring * 0.2 }}
             >
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
-                <img
+              <div className="relative w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                <Image
                   src={partner.logo}
                   alt={partner.id}
-                  className="w-10 h-10 object-contain rounded-full"
+                  width={40}
+                  height={40}
+                  className="object-contain rounded-full"
                 />
               </div>
             </motion.div>

@@ -16,7 +16,7 @@ export async function submitSupplier(data: SupplierSubmitPayload) {
   const result = (await response.json()) as ApiResponse
 
   if (result.code !== 200) {
-    throw new Error(result.msg || '提交失败，请重试')
+    throw new Error(result.msg ?? '提交失败，请重试')
   }
 
   return result
@@ -35,7 +35,7 @@ export async function uploadSupplierFile(file: File, fileType: string): Promise<
   const result = (await response.json()) as ApiResponse<string>
 
   if (result.code !== 200 || !result.data) {
-    throw new Error(result.msg || '上传失败')
+    throw new Error(result.msg ?? '上传失败')
   }
 
   return result.data

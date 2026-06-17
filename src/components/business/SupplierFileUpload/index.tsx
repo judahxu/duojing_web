@@ -3,8 +3,6 @@
 import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { uploadSupplierFile } from '@/lib/supplier-api'
-import { cn } from '@/lib/utils'
-
 interface SupplierFileUploadProps {
   value: string
   onChange: (value: string) => void
@@ -19,7 +17,7 @@ interface SupplierFileUploadProps {
 
 function getFileNameFromUrl(url: string) {
   const parts = url.split('/')
-  return parts[parts.length - 1] || '文件'
+  return parts[parts.length - 1] ?? '文件'
 }
 
 function checkFileType(file: File, accept: string) {
