@@ -57,6 +57,13 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			brand: {
+  				DEFAULT: 'hsl(var(--brand))',
+  				foreground: 'hsl(var(--brand-foreground))',
+  				muted: 'hsl(var(--brand-muted))',
+  				subtle: 'hsl(var(--brand-subtle))',
+  				dim: 'hsl(var(--brand-dim))',
   			}
   		},
 			animation: {

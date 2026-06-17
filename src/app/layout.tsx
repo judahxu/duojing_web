@@ -1,6 +1,6 @@
 import { Header } from '@/components/common/Header'
 import { Footer } from '@/components/common/Footer'
-import { ChatWidget } from '@/components/chat/ChatWidget'
+import { FloatingContactBar } from '@/components/common/FloatingContactBar'
 import '~/styles/globals.css'
 
 export const metadata = {
@@ -41,11 +41,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh">
-      <body className="min-h-screen flex flex-col">
+    <html lang="zh" className="dark">
+      <body className="min-h-screen flex flex-col bg-gray-950 text-white">
         <Header />
         <main className="flex-grow">{children}</main>
-        <ChatWidget />
+        <FloatingContactBar />
         <Footer />
       </body>
     </html>

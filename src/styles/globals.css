@@ -53,7 +53,13 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
+    /* 品牌色：低饱和 cyan，与导航/悬浮栏一致 */
+    --brand: 187 72% 59%;
+    --brand-foreground: 186 80% 90%;
+    --brand-muted: 186 35% 72%;
+    --brand-subtle: 187 55% 42%;
+    --brand-dim: 187 40% 18%;
   }
 }
 @layer base {
@@ -62,5 +68,16 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+@layer utilities {
+  .text-brand-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-foreground;
+  }
+  .bg-brand-gradient {
+    @apply bg-gradient-to-r from-transparent via-brand/70 to-transparent;
+  }
+  .heading-brand-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-foreground;
   }
 }

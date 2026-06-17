@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Globe } from 'lucide-react';
 import { useMediaQuery } from 'react-responsive';
+import type { DomainIconKey } from '@/components/icons/domain-icons';
+import { DomainIcon } from '@/components/icons/domain-icons';
 
 interface Partner {
   id: string;
@@ -15,7 +17,7 @@ interface Partner {
 interface CoreScenario {
   id: string;
   name: string;
-  icon: string;
+  icon: DomainIconKey;
   angle: number;
 }
 
@@ -31,10 +33,10 @@ const PartnerNetwork = () => {
 
   // 核心场景数据
   const coreScenarios: CoreScenario[] = [
-    { id: 'auto', name: '自动驾驶', icon: '🚗', angle: 0 },
-    { id: 'llm', name: '通用大模型', icon: '🤖', angle: 90 },
-    { id: 'industry', name: '行业垂类应用', icon: '🏢', angle: 180 },
-    { id: 'embodied', name: '具身智能', icon: '🦾', angle: 270 }
+    { id: 'auto', name: '自动驾驶', icon: 'auto', angle: 0 },
+    { id: 'llm', name: '通用大模型', icon: 'llm', angle: 90 },
+    { id: 'industry', name: '行业垂类应用', icon: 'industry', angle: 180 },
+    { id: 'embodied', name: '具身智能', icon: 'robotics', angle: 270 }
   ];
 
   // 修改合作伙伴数据的生成方式，确保与轨道对齐
@@ -104,11 +106,11 @@ const PartnerNetwork = () => {
         {/* 移动端布局代码... */}
         {/* 头部标题区域 */}
         <div className="text-center mb-12 mt-20">
-          <div className="bg-blue-500/10 rounded-full w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-            <Globe className="w-12 h-12 text-blue-400" />
+          <div className="bg-brand/10 rounded-full w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+            <Globe className="w-12 h-12 text-brand" />
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">30+</h2>
-          <p className="text-blue-300 text-sm">国内外各场景顶级合作伙伴</p>
+          <p className="text-brand-muted text-sm">国内外各场景顶级合作伙伴</p>
         </div>
 
         {/* 核心场景展示 */}
@@ -116,11 +118,13 @@ const PartnerNetwork = () => {
           {coreScenarios.map((scenario) => (
             <div 
               key={scenario.id}
-              className="bg-blue-500/10 rounded-lg p-4 backdrop-blur-sm"
+              className="bg-brand/10 rounded-lg p-4 backdrop-blur-sm"
             >
               <div className="flex items-center space-x-3">
-                <span className="text-2xl">{scenario.icon}</span>
-                <span className="text-blue-300 text-sm">{scenario.name}</span>
+                <div className="w-10 h-10 rounded-full bg-brand/15 ring-1 ring-brand/25 flex items-center justify-center text-brand">
+                  <DomainIcon name={scenario.icon} className="w-5 h-5" />
+                </div>
+                <span className="text-brand-muted text-sm">{scenario.name}</span>
               </div>
             </div>
           ))}
@@ -225,10 +229,10 @@ const PartnerNetwork = () => {
                 scale: pos.scale,
               }}
             >
-              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <span className="text-3xl">{scenario.icon}</span>
+              <div className="w-16 h-16 bg-brand/20 rounded-full flex items-center justify-center backdrop-blur-sm text-brand ring-1 ring-brand/30">
+                <DomainIcon name={scenario.icon} className="w-8 h-8" />
               </div>
-              <div className="text-blue-300 text-sm mt-2 whitespace-nowrap text-center">
+              <div className="text-brand-muted text-sm mt-2 whitespace-nowrap text-center">
                 {scenario.name}
               </div>
             </motion.div>
@@ -243,7 +247,7 @@ const PartnerNetwork = () => {
             className="relative w-80 h-80"
           >
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent animate-pulse">
                 <img src="/earth1.png" alt="" className="w-full h-full object-contain" />
               </div>
               <img src="/earth.png" alt="" className="w-full h-full object-contain" />
@@ -251,7 +255,7 @@ const PartnerNetwork = () => {
             
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 rounded-full">
               <div className="text-8xl font-bold text-white mb-2">30+</div>
-              <div className="text-xl text-blue-300 text-center">
+              <div className="text-xl text-brand-muted text-center">
                 国内外各场景<br />
                 顶级合作伙伴
               </div>
@@ -296,7 +300,7 @@ const PartnerNetwork = () => {
         {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/20 rounded-full"
+            className="absolute w-1 h-1 bg-brand/20 rounded-full"
             animate={{
               x: ["0%", `${Math.random() * 100}%`],
               y: ["0%", `${Math.random() * 100}%`],

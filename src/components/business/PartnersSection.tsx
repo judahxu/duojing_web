@@ -11,7 +11,7 @@ const PartnersSection = () => {
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16 text-blue-900">合作伙伴</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-brand-subtle">合作伙伴</h2>
         <div className="relative w-full">
           <img src="/hezuo.jpg" alt="" />
           {/* 使用两个滚动容器实现无限滚动 */}
